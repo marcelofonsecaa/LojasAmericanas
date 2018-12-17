@@ -17,6 +17,7 @@ namespace ValidarAmericanas.PageObject
         //public By arvoreNatal {  get { return By.LinkText("https://www.americanas.com.br/categoria/enfeites-de-natal/arvores-de-natal"); } }
         public By arvoreNatal {  get { return By.XPath("//*[@id='h_menu']/div/div/div/div/div[1]/ul/li[2]/div/ul/li[3]/div/ul/li[3]/a"); } }
         public By label { get { return By.XPath("//*[@id='content - top']/div[1]/div/h1"); } }
+
     }
 
 

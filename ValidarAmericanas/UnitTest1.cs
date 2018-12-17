@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 
 namespace ValidarAmericanas
 {
@@ -11,6 +12,7 @@ namespace ValidarAmericanas
     {
         IWebDriver driver;
         PageObject.PageObjectAmericanas pagina;
+        //Select select = new Select(comboBox);
 
         [TestInitialize]
         public void Iniciar()
@@ -27,9 +29,13 @@ namespace ValidarAmericanas
             action.MoveToElement(driver.FindElement(pagina.compreDepartamento)).Perform();
             System.Threading.Thread.Sleep(2000);
             action.MoveToElement(driver.FindElement(pagina.enfeitesNatal)).Perform();
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
             action.Click(driver.FindElement(pagina.arvoreNatal)).Perform();
-            
+            IWebElement cBox = driver.FindElement(By.Id("form-control-flat selectbox"));
+            System.Threading.Thread.Sleep(2000);
+            action.MoveToElement(cBox).Click().Perform();
+            new SelectElement(driver.FindElement(By.CssSelector("select.form-control-flat.form-control"))).SelectByText("Menores Preços");
+
 
             if (pagina.label.Equals("árvores de natal")) 
             {
@@ -39,7 +45,7 @@ namespace ValidarAmericanas
             { 
                 Console.Write("Nao rolou!!");
             }
-
+            
             
 
         }
